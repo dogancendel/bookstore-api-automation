@@ -2,7 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Checkout') {
-      steps { checkout scm }
+      steps {
+        git url: 'https://github.com/dogancendel/bookstore-api-automation.git', branch: 'main'
+      }
     }
     stage('Build Image') {
       steps {
@@ -11,15 +13,15 @@ pipeline {
     }
     stage('Run Tests in Container') {
       steps {
-        // Mount workspace/target so test artifacts are available to Jenkins
-        sh '''
-          docker run --rm             -v $(pwd)/target:/app/target             bookstore-api-tests:${env.BUILD_NUMBER}
-        '''
+        sh """
+          docker run --rm \
+            -v ${env.WORKSPACE}/target:/app/target \
+            bookstore-api-tests:${env.BUILD_NUMBER}
+        """
       }
     }
     stage('Publish Reports') {
       steps {
-        // Assumes Allure plugin installed on Jenkins
         allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
       }
     }
