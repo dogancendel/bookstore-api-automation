@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.bookstore.tests.book.BooksApiTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.621 s - in com.bookstore.tests.book.BooksApiTest

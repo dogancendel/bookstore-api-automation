@@ -4,7 +4,8 @@ import com.bookstore.config.RequestSpecFactory;
 import com.bookstore.models.Book;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
+import io.qameta.allure.Step;
+import io.qameta.allure.Attachment;
 import static io.restassured.RestAssured.given;
 
 public class BookApiClient {
@@ -15,6 +16,7 @@ public class BookApiClient {
         this.spec = RequestSpecFactory.getRequestSpec();
     }
 
+    @Step("Get all books")
     public Response getAllBooks() {
         return given(spec).when().get(BASE_PATH).then().extract().response();
     }

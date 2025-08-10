@@ -1,2 +1,2 @@
-com/bookstore/tests/book/BooksApiTest.class
-com/bookstore/tests/base/BaseTest.class
+com/bookstore/book/BooksApiTest.class
+com/bookstore/base/BaseTest.class

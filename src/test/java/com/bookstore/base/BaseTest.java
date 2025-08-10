@@ -1,4 +1,4 @@
-package com.bookstore.tests.base;
+package com.bookstore.base;
 
 import com.bookstore.config.RequestSpecFactory;
 import io.restassured.RestAssured;
