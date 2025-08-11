@@ -1,39 +1,54 @@
 package com.bookstore.api;
 
-import com.bookstore.config.RequestSpecFactory;
 import com.bookstore.models.Book;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import io.qameta.allure.Step;
-import io.qameta.allure.Attachment;
 import static io.restassured.RestAssured.given;
 
-public class BookApiClient {
+public class BookApiClient extends BaseApiClient {
     private static final String BASE_PATH = "/api/v1/Books";
-    private final RequestSpecification spec;
 
     public BookApiClient() {
-        this.spec = RequestSpecFactory.getRequestSpec();
+        super(BASE_PATH);
     }
 
     @Step("Get all books")
     public Response getAllBooks() {
-        return given(spec).when().get(BASE_PATH).then().extract().response();
+        return logResponse(
+                given(spec).when().get(basePath)
+        );
     }
 
+    @Step("Get book by ID: {id}")
     public Response getBookById(int id) {
-        return given(spec).when().get(BASE_PATH + "/" + id).then().extract().response();
+        return logResponse(
+                given(spec).pathParam("id", id)
+                        .when().get(basePath + "/{id}")
+        );
     }
 
+    @Step("Create new book")
     public Response createBook(Book book) {
-        return given(spec).body(book).when().post(BASE_PATH).then().extract().response();
+        return logResponse(
+                given(spec).body(book)
+                        .when().post(basePath)
+        );
     }
 
+    @Step("Update book with ID: {id}")
     public Response updateBook(int id, Book book) {
-        return given(spec).body(book).when().put(BASE_PATH + "/" + id).then().extract().response();
+        return logResponse(
+                given(spec).pathParam("id", id)
+                        .body(book)
+                        .when().put(basePath + "/{id}")
+        );
     }
 
-    public Response deleteBook(int id) {
-        return given(spec).when().delete(BASE_PATH + "/" + id).then().extract().response();
+    @Step("Delete book with ID: {id}")
+    public Response deleteBook(long id) {
+        return logResponse(
+                given(spec).pathParam("id", id)
+                        .when().delete(basePath + "/{id}")
+        );
     }
 }

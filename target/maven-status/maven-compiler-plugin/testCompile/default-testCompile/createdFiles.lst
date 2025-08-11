@@ -1,2 +1,7 @@
+com/bookstore/author/AuthorNegativeTest.class
 com/bookstore/book/BooksApiTest.class
+com/bookstore/author/AuthorApiTest.class
+com/bookstore/book/BookNegativeTest.class
+com/bookstore/author/AuthorEdgeCaseTest.class
+com/bookstore/book/BookEdgeCaseTest.class
 com/bookstore/base/BaseTest.class

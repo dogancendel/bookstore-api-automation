@@ -37,6 +37,10 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", pageCount=" + pageCount +
+                ", excerpt='" + excerpt + '\'' +
+                ", publishDate='" + publishDate + '\'' +
                 '}';
     }
 }

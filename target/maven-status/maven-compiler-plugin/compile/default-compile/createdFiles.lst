@@ -1,5 +1,6 @@
+com/bookstore/models/Book.class
 com/bookstore/config/ApiConfig.class
 com/bookstore/config/RequestSpecFactory.class
 com/bookstore/api/BookApiClient.class
-com/bookstore/models/Book.class
+com/bookstore/utils/TestDataFactory.class
 com/bookstore/models/Author.class
